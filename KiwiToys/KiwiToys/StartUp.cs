@@ -1,4 +1,7 @@
-﻿namespace KiwiToys {
+﻿using KiwiToys.Data;
+using Microsoft.EntityFrameworkCore;
+
+namespace KiwiToys {
     public class StartUp {
         public static WebApplication InitializeApplication(string[] args) {
             var builder = WebApplication.CreateBuilder(args);
@@ -9,6 +12,10 @@
         }
 
         private static void ConfigureServices(WebApplicationBuilder builder) {
+            builder.Services.AddDbContext<DataContext>(options => {
+                options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+            });
+
             builder.Services.AddControllersWithViews();
             builder.Services.AddRazorPages().AddRazorRuntimeCompilation();
         }
