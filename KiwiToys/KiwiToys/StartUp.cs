@@ -9,6 +9,7 @@ namespace KiwiToys {
             var builder = WebApplication.CreateBuilder(args);
             ConfigureServices(builder);
             var app = builder.Build();
+            SeedData(app);
             ConfigureMiddlewares(app);
             return app;
         }
@@ -42,6 +43,8 @@ namespace KiwiToys {
 
             builder.Services.AddControllersWithViews();
             builder.Services.AddRazorPages().AddRazorRuntimeCompilation();
+
+            builder.Services.AddTransient<SeedDb>();
         }
 
         private static void ConfigureMiddlewares(WebApplication app) {
@@ -61,6 +64,13 @@ namespace KiwiToys {
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}"
             );
+        }
+
+        private static void SeedData(WebApplication app) {
+            IServiceScopeFactory scopeFactory = app.Services.GetService<IServiceScopeFactory>();
+            using IServiceScope scope = scopeFactory.CreateScope();
+            SeedDb service = scope.ServiceProvider.GetService<SeedDb>();
+            service.SeedAsync().Wait();
         }
     }
 }
