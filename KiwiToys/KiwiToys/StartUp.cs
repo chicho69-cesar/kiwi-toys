@@ -1,4 +1,6 @@
 ﻿using KiwiToys.Data;
+using KiwiToys.Data.Entities;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 namespace KiwiToys {
@@ -16,6 +18,28 @@ namespace KiwiToys {
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
             });
 
+            builder.Services.AddIdentity<User, IdentityRole>(config => {
+                config.Tokens.AuthenticatorTokenProvider = TokenOptions.DefaultAuthenticatorProvider;
+                config.SignIn.RequireConfirmedEmail = true;
+                config.User.RequireUniqueEmail = true;
+                config.Password.RequireDigit = true;
+                config.Password.RequiredUniqueChars = 0;
+                config.Password.RequireLowercase = true;
+                config.Password.RequireNonAlphanumeric = true;
+                config.Password.RequireUppercase = false;
+                config.Password.RequiredLength = 8;
+                config.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromSeconds(10); //TimeSpan.FromMinutes(5);
+                config.Lockout.MaxFailedAccessAttempts = 5;
+                config.Lockout.AllowedForNewUsers = true;
+            })
+                .AddDefaultTokenProviders()
+                .AddEntityFrameworkStores<DataContext>();
+
+            builder.Services.ConfigureApplicationCookie(options => {
+                options.LoginPath = "/Accounts/NotAuthorized";
+                options.AccessDeniedPath = "/Accounts/NotAuthorized";
+            });
+
             builder.Services.AddControllersWithViews();
             builder.Services.AddRazorPages().AddRazorRuntimeCompilation();
         }
@@ -26,9 +50,11 @@ namespace KiwiToys {
                 app.UseHsts();
             }
 
+            app.UseStatusCodePagesWithReExecute("/error/{0}");
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseRouting();
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.MapControllerRoute(
