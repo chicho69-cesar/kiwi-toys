@@ -1,5 +1,25 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@{
+    ViewData["Title"] = "Confirmación de Email";
 }
+
+<div class="row">
+    <div class="col-md-4 offset-4 mt-4">
+        <div class="card bg-light mb-3 form-shadow">
+            <h2 class="card-header text-center bg-info text-white mb-3">
+                <i class="fa-solid fa-envelope text-navy"></i>
+                @ViewData["Title"]
+            </h2>
+
+            <div class="card-body" style="background-color: #f9f9f9 !important;">
+                <p class="mb-3">
+                    Gracias por confirmar el email, ahora
+                    puedes iniciar sesión en el sistema.
+                </p>
+
+                <a asp-action="Login" class="btn btn-outline-success" style="width: 100% !important;">
+                    Iniciar Sesión
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

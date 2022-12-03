@@ -1,5 +1,66 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model EditUserViewModel
+
 @{
+    ViewData["Title"] = "Editar usuario";
+}
+
+<h2>Editar</h2>
+<h4>Usuario</h4>
+
+<hr />
+
+<div class="row">
+    <div class="col-md-8">
+        <form asp-action="ChangeUser" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <input type="hidden" asp-for="Id" />
+            <input type="hidden" asp-for="ImageId" />
+            <input type="hidden" asp-for="Countries" />
+            <input type="hidden" asp-for="States" />
+            <input type="hidden" asp-for="Cities" />
+
+            <partial name="_User" />
+
+            <div class="form-group mt-2 mb-3 text-center">
+                <input type="submit" value="Guardar" class="btn btn-outline-primary col-md-4" />
+                <a asp-action="ChangePassword" class="btn btn-outline-secondary col-md-4">Cambiar Contraseña</a>
+            </div>
+        </form>
+    </div>
+
+    <div class="col-md-4">
+        <img src="@Model.ImageFullPath" class="avatar" />
+    </div>
+</div>
+
+<style>
+    .avatar {
+        display: block;
+        margin: auto;
+        width: 250px;
+        height: 250px;
+        border-radius: 50%;
+        object-fit: cover;
+        object-position: center;
+    }
+</style>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <script src="~/js/DropdownCascade.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            const urlGetStates = '@Url.Action("GetStates")';
+            const urlGetCities = '@Url.Action("GetCities")';
+
+            $(function () {
+                dropdownCascade(urlGetStates, urlGetCities);
+            });
+        });
+    </script>
 }

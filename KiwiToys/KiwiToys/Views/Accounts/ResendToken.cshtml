@@ -1,5 +1,39 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model ResendTokenViewModel
+
 @{
+    ViewData["Title"] = "Reenvío Email de Confirmación";
 }
+
+<flash dismissable="true" />
+
+<div class="container">
+    <div class="card">
+        <h5 class="card-header">
+            <i class="fa-solid fa-mail text-navy"></i>
+            Reenvío de Email de Confirmación
+        </h5>
+
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-12">
+                    <form method="post">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                        <div class="form-group mb-3">
+                            <label asp-for="Username"></label>
+                            <input asp-for="Username" class="form-control" />
+                            <span asp-validation-for="Username" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group mt-2 mb-3">
+                            <button type="submit" class="btn btn-outline-primary">
+                                <i class="fa-solid fa-envelope"></i>
+                                Reenvíar Email de Confirmación
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

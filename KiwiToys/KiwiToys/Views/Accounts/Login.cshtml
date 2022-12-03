@@ -1,5 +1,66 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model LoginViewModel
+
 @{
+    ViewData["Title"] = "Login";
+}
+
+<flash dismissable="true" />
+
+<div class="row">
+    <div class="col-md-4 offset-4 mt-4">
+        <div class="card bg-light mb-3 form-shadow" style="width: 450px; height: 450px">
+            <h5 class="card-header text-center bg-info text-white">
+                <i class="fa-solid fa-envelope text-navy"></i>
+                Iniciar Sesión
+            </h5>
+
+            <div class="card-body" style="background-color: #f9f9f9 !important;">
+                <form asp-action="Login">
+                    <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+
+                    <div class="form-group mb-3">
+                        <label asp-for="Username" class="control-label"></label>
+                        <input asp-for="Username" class="form-control" />
+                        <span asp-validation-for="Username" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label asp-for="Password" class="control-label"></label>
+                        <input asp-for="Password" type="password" class="form-control" />
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <div class="form-check">
+                            <input asp-for="RememberMe" type="checkbox" class="form-check-input" />
+                            <label asp-for="RememberMe" class="form-check-label"></label>
+                        </div>
+
+                        <span asp-validation-for="RememberMe" class="text-warning"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" value="Login" class="btn btn-primary btn-block mb-3" style="width: 100% !important;">
+                            <i class="fa-solid fa-user"></i> Iniciar Sesión
+                        </button>
+
+                        <a asp-action="Register" class="btn btn-secondary btn-block mb-3" style="width: 100% !important;">
+                            <i class="fa-solid fa-circle-plus"></i>
+                            ¿Aún no tienes una cuenta? Da click aquí...
+                        </a>
+                    </div>
+                </form>
+
+                <div class="card-footer bg-transparent text-center" style="padding-top: 1.5rem;">
+                    ¿Has olvidado tu contraseña? <a asp-action="RecoverPassword">Recuperala aquí</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }

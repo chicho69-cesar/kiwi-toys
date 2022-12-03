@@ -261,8 +261,6 @@ namespace KiwiToys.Data {
                 ImageId = imageId
             };
 
-            news.User.News.Add(news);
-
             await _context.News.AddAsync(news);
         }
 
@@ -277,8 +275,6 @@ namespace KiwiToys.Data {
                 Date = DateTime.Now,
                 Remark = remark
             };
-
-            opinion.User.Opinions.Add(opinion);
 
             await _context.Opinions.AddAsync(opinion);
         }
