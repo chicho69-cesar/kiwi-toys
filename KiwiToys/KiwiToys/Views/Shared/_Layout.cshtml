@@ -5,8 +5,13 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         
         <title>@ViewData["Title"]</title>
-        
-        @*<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />*@
+
+        <link rel="icon" type="image/x-icon" href="~/favicon.ico" />
+
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="~/lib/datatables/css/jquery.dataTables.min.css" />
+        <link rel="stylesheet" href="~/lib/jqueryui/jquery-ui.min.css" />
         <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
         <link rel="stylesheet" href="~/KiwiToys.styles.css" asp-append-version="true" />
     </head>
@@ -45,9 +50,24 @@
         </div>
 
         <script src="~/lib/jquery/dist/jquery.min.js"></script>
-        @*<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>*@
+        <script src="~/lib/jasny/jasny-bootstrap.min.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="~/lib/datatables/js/jquery.dataTables.min.js"></script>
+        <script src="~/lib/jquery-ui/jquery-ui.min.js"></script>
         <script src="~/js/site.js" asp-append-version="true"></script>
-        
+
+        <script>
+            function displayBusyIndicator() {
+                $('.loading').show();
+            }
+        </script>
+
+        <script>
+            $(window).on('beforeunload', function () {
+                displayBusyIndicator();
+            });
+        </script>
+
         @await RenderSectionAsync("Scripts", required: false)
     </body>
 </html>
