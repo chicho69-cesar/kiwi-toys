@@ -1,5 +1,7 @@
 ﻿using KiwiToys.Data;
 using KiwiToys.Data.Entities;
+using KiwiToys.Helpers;
+using KiwiToys.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Vereyon.Web;
@@ -48,6 +50,16 @@ namespace KiwiToys {
             builder.Services.AddTransient<SeedDb>();
             builder.Services.AddAutoMapper(typeof(Program));
             builder.Services.AddFlashMessage();
+
+            builder.Services.AddScoped<IApiService, ApiService>();
+            
+            builder.Services.AddScoped<IBlobHelper, BlobHelper>();
+            builder.Services.AddScoped<IBodyMailHelper, BodyMailHelper>();
+            builder.Services.AddScoped<ICombosHelper, CombosHelper>();
+            builder.Services.AddScoped<IGetLocation, GetLocation>();
+            builder.Services.AddScoped<IMailHelper, MailHelper>();
+            builder.Services.AddScoped<IOrdersHelper, OrdersHelper>();
+            builder.Services.AddScoped<IUserHelper, UserHelper>();
         }
 
         private static void ConfigureMiddlewares(WebApplication app) {

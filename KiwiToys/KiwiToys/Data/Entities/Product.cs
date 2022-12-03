@@ -46,5 +46,7 @@ namespace KiwiToys.Data.Entities {
             : ProductImages.FirstOrDefault().ImageFullPath;
 
         public ICollection<SaleDetail> SaleDetails { get; set; }
+
+        public ICollection<Comment> Comments { get; set; }
     }
 }

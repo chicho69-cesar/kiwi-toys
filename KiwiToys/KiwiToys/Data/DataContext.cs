@@ -8,7 +8,10 @@ namespace KiwiToys.Data {
 
         public DbSet<Category> Categories { get; set; }
         public DbSet<City> Cities { get; set; }
+        public DbSet<Comment> Comments { get; set; }
         public DbSet<Country> Countries { get; set; }
+        public DbSet<News> News { get; set; }
+        public DbSet<Opinion> Opinions { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<ProductCategory> ProductCategories { get; set; }
         public DbSet<ProductImage> ProductImages { get; set; }

@@ -48,5 +48,11 @@ namespace KiwiToys.Data.Entities {
             $"{FirstName} {LastName} - {Document}";
 
         public ICollection<Sale> Sales { get; set; }
+
+        public ICollection<News> News { get; set; }
+        
+        public ICollection<Opinion> Opinions { get; set; }
+        
+        public ICollection<Comment> Comments { get; set; }
     }
 }
