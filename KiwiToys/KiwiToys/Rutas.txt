@@ -1,0 +1,8 @@
+﻿https://localhost:7215/images/noimage.png
+https://shopping-cesar.azurewebsites.net/images/noimage.png
+https://shoppingcar.blob.core.windows.net/products/{ImageId}
+https://shoppingcar.blob.core.windows.net/users/{ImageId}
+
+https://kiwitoys.blob.core.windows.net/products/{ImageId}
+https://kiwitoys.blob.core.windows.net/users/{ImageId}
+https://kiwitoys.blob.core.windows.net/news/{ImageId}

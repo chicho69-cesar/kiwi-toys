@@ -33,8 +33,8 @@ namespace KiwiToys.Data.Entities {
         // TODO: Change the path for local development
         [Display(Name = "Foto")]
         public string ImageFullPath => ImageId == Guid.Empty
-            ? $"https://shopping-cesar.azurewebsites.net/images/noimage.png"
-            : $"https://shoppingcar.blob.core.windows.net/users/{ImageId}";
+            ? $"https://localhost:7215/images/noimage.png"
+            : $"https://kiwitoys.blob.core.windows.net/users/{ImageId}";
 
         [Display(Name = "Tipo de usuario")]
         public UserType UserType { get; set; }

@@ -42,7 +42,7 @@ namespace KiwiToys.Data.Entities {
         // TODO: Change the path for local development
         [Display(Name = "Foto")]
         public string ImageFullPath => ProductImages == null || ProductImages.Count == 0
-            ? $"https://shopping-cesar.azurewebsites.net/images/noimage.png"
+            ? $"https://localhost:7215/images/noimage.png"
             : ProductImages.FirstOrDefault().ImageFullPath;
 
         public ICollection<SaleDetail> SaleDetails { get; set; }

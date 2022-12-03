@@ -2,6 +2,7 @@
 using KiwiToys.Data.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Vereyon.Web;
 
 namespace KiwiToys {
     public class StartUp {
@@ -45,6 +46,8 @@ namespace KiwiToys {
             builder.Services.AddRazorPages().AddRazorRuntimeCompilation();
 
             builder.Services.AddTransient<SeedDb>();
+            builder.Services.AddAutoMapper(typeof(Program));
+            builder.Services.AddFlashMessage();
         }
 
         private static void ConfigureMiddlewares(WebApplication app) {
