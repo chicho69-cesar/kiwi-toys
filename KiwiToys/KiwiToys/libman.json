@@ -1,0 +1,18 @@
+{
+  "version": "1.0",
+  "defaultProvider": "cdnjs",
+  "libraries": [
+    {
+      "library": "datatables@1.10.21",
+      "destination": "wwwroot/lib/datatables/"
+    },
+    {
+      "library": "font-awesome@6.2.1",
+      "destination": "wwwroot/lib/font-awesome/"
+    },
+    {
+      "library": "jasny-bootstrap@4.0.0",
+      "destination": "wwwroot/lib/jasny-bootstrap/"
+    }
+  ]
+}
