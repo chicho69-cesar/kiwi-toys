@@ -56,9 +56,10 @@
 </form>
 
 @if (Model.Quantity > 0) {
-    <a asp-action="ShowCart" class="btn btn-outline-primary">
-        Ver Carro de Compras
-        <span class="quantity">(@Model.Quantity)</span>
+    <a asp-action="ShowCart" class="button-cart">
+        <i class="bi bi-cart3"></i> 
+        Ir al carrito 
+        <span class="quantity">[@Model.Quantity]</span>
     </a>
 }
 

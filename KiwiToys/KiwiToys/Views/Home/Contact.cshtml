@@ -1,0 +1,67 @@
+﻿@model ContactViewModel
+
+@{
+    ViewData["title"] = "Contactanos";
+}
+
+<section class="contact-header">
+    <h1>Contactanos</h1>
+</section>
+
+<section class="contact-cards">
+    <article class="contact-card">
+        <p>
+            <span class="contact-card-title">Dirección: </span>
+            Hacienda el Saucillo 150,Haciendas de Aguascalientes, Aguascalientes, Ags Republica Mexicana
+        </p>
+    </article>
+
+    <article class="contact-card">
+        <p>
+            <span class="contact-card-title">Telefono: </span>
+            <a href="tel://4491923465">449-192-3465</a>
+        </p>
+    </article>
+
+    <article class="contact-card">
+        <p>
+            <span class="contact-card-title">Email: </span>
+            <a href="mailto:cc915609@gmail.com">cc915609@gmail.com</a>
+        </p>
+    </article>
+
+    <article class="contact-card">
+        <p>
+            <span class="contact-card-title">Facebook: </span>
+            <a href="facebook.com">Kiwi Toys</a>
+        </p>
+    </article>
+</section>
+
+<flash dismissable="true" />
+
+<section class="contact-section">
+    <form asp-controller="Home" asp-action="Contact" class="contact-form">
+        <div class="mb-3 contact-group">
+            <label asp-for="Name" class="contact-label"></label>
+            <input class="contact-control" asp-for="Name" placeholder="Nombre..." />
+            <span class="text-danger" asp-validation-for="Name"></span>
+        </div>
+
+        <div class="mb-3 contact-group">
+            <label asp-for="Email" class="contact-label"></label>
+            <input class="contact-control" asp-for="Email" placeholder="nombre@ejemplo.com" />
+            <span class="text-danger" asp-validation-for="Email"></span>
+        </div>
+
+        <div class="mb-3 contact-group">
+            <label asp-for="Message" class="contact-label"></label>
+            <textarea class="contact-control" asp-for="Message" rows="3" placeholder="Hola..."></textarea>
+            <span class="text-danger" asp-validation-for="Message"></span>
+        </div>
+
+        <button type="submit" class="contact-button">Enviar</button>
+    </form>
+</section>
+
+<link rel="stylesheet" href="~/css/contact.css" asp-append-version="true" />

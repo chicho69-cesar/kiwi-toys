@@ -1,0 +1,15 @@
+.news-header {
+    width: 100vw;
+    height: 400px;
+    margin: -2rem 0 2rem;
+    margin-left: calc(((100vw - 1110px) / 2) * -1);
+    background: dodgerblue url('../images/bg-1.jpg') no-repeat fixed right bottom / cover;
+    display: grid;
+    place-content: center;
+}
+
+.news-header h1 {
+    font-size: 3.5rem;
+    font-weight: bolder;
+    color: #000;
+}

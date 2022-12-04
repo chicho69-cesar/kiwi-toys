@@ -60,6 +60,7 @@ namespace KiwiToys {
             builder.Services.AddScoped<IMailHelper, MailHelper>();
             builder.Services.AddScoped<IOrdersHelper, OrdersHelper>();
             builder.Services.AddScoped<IUserHelper, UserHelper>();
+            builder.Services.AddScoped<IContactService, ContactService>();
         }
 
         private static void ConfigureMiddlewares(WebApplication app) {

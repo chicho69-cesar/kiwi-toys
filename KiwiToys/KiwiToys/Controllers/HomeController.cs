@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using Vereyon.Web;
 using Microsoft.EntityFrameworkCore;
+using KiwiToys.Services;
 
 namespace KiwiToys.Controllers {
     public class HomeController : Controller {
@@ -16,6 +17,7 @@ namespace KiwiToys.Controllers {
         private readonly DataContext _context;
         private readonly IUserHelper _userHelper;
         private readonly IOrdersHelper _ordersHelper;
+        private readonly IContactService _contactService;
         private readonly IFlashMessage _flashMessage;
         private readonly IMapper _mapper;
 
@@ -24,6 +26,7 @@ namespace KiwiToys.Controllers {
             DataContext context,
             IUserHelper userHelper,
             IOrdersHelper ordersHelper,
+            IContactService contactService,
             IFlashMessage flashMessage,
             IMapper mapper
         ) {
@@ -31,6 +34,7 @@ namespace KiwiToys.Controllers {
             _context = context;
             _userHelper = userHelper;
             _ordersHelper = ordersHelper;
+            _contactService = contactService;
             _flashMessage = flashMessage;
             _mapper = mapper;
         }
@@ -96,6 +100,32 @@ namespace KiwiToys.Controllers {
             }
 
             return View(model);
+        }
+
+        [HttpGet]
+        public IActionResult About() {
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult Contact() {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Contact(ContactViewModel contactViewModel) {
+            if (!ModelState.IsValid) {
+                return View(contactViewModel);
+            }
+
+            string message = _contactService.SendMessage(contactViewModel);
+
+            if (message == "Success") {
+                return RedirectToAction(nameof(Index));
+            } else {
+                _flashMessage.Danger("Error al enviar el mensaje :(");
+                return View(contactViewModel);
+            }
         }
 
         /*TODO: Hacer que el agregar al carrito sea a traves de AJAX

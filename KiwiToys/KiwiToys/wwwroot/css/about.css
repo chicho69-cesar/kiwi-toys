@@ -1,0 +1,15 @@
+.about-header {
+    width: 100vw;
+    height: 420px;
+    margin: -2rem 0 2rem;
+    margin-left: calc(((100vw - 1110px) / 2) * -1);
+    background: #202020 url('../images/bg-2.png') no-repeat fixed right top / cover;
+    display: grid;
+    place-content: center;
+}
+
+.about-header h1 {
+    font-size: 3.5rem;
+    font-weight: bolder;
+    color: #000;
+}
