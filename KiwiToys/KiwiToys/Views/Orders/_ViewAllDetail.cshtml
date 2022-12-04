@@ -1,5 +1,84 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@model IEnumerable<SaleDetail>
+
+<table class="table table-striped table-responsive-md table-bordered smfont" id="DetailsTable">
+    <colgroup>
+        <col span="1" />
+        <col span="1" />
+        <col span="1" />
+        <col span="1" />
+        <col span="1" />
+        <col span="1" />
+    </colgroup>
+
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Product.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Remarks)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Product.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Quantity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Value)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Product.ImageFullPath)
+            </th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Product.Name)
+                </td>
+                <td>
+                    @{
+                        if (item.Remarks != null) {
+                            string[] noteWords = item.Remarks.Split(' ');
+
+                            if (noteWords.Count() > 7) {
+                                <a class="text-dark" role="button"
+                       data-bs-toggle="collapse"
+                       href="#collapseSum@(item.Id)"
+                       aria-expanded="false"
+                       aria-controls="collapseSum@(item.Id)"
+                       style="text-decoration: none !important;">
+                                    @(string.Join(" ", noteWords.Take(7)) + "...")
+                                </a>
+
+                                <div class="collapse" id="collapseSum@(item.Id)">
+                                    <div class="card card-body bg-light">
+                                        @(string.Join(" ", noteWords.Skip(7)))
+                                    </div>
+                                </div>
+                            } else {
+                                @Html.DisplayFor(modelItem => item.Remarks)
+                                ;
+                            }
+                        }
+                    }
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Product.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Quantity)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Value)
+                </td>
+                <td>
+                    <img src="@item.Product.ImageFullPath" style="width:100px;" />
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

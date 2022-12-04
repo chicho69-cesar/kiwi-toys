@@ -1,5 +1,62 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model Country
+
 @{
+    ViewData["Title"] = "" + Model.Name;
+}
+
+<flash dismissable="true" />
+
+<h1>Detalles</h1>
+
+<div>
+    <partial name="_CountryDetails" />
+</div>
+
+<div>
+    <a asp-action="Index" class="btn btn-outline-success"><i class="fa-solid fa-arrow-rotate-left"></i> Regresar</a>
+</div>
+
+<hr />
+
+<div class="container-fluid">
+    <div class="card mt-2">
+        <div class="card-header text-danger">
+            <i class="fa fa-globe"></i> <strong>Estados</strong>
+        </div>
+
+        <div class="card-body">
+            <div id="view-all">
+                @await Html.PartialAsync("_ViewAllStates", Model)
+            </div>
+        </div>
+    </div>
+</div>
+
+<partial name="_AddOrEditDialog" />
+<partial name="_DeleteDialog" />
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <script src="~/js/showmodal.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#StatesTable').DataTable({
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
+                },
+                "aLengthMenu": [
+                    [25, 50, 100, 200, -1],
+                    [25, 50, 100, 200, "Todos"]
+                ]
+            });
+        });
+    </script>
+
+    <script>
+        sc_deleteDialog.openModal('deleteItem', true, 'btnYesDelete', '/Countries/DeleteState/', false);
+    </script>
 }

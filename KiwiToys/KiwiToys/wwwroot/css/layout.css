@@ -1,0 +1,95 @@
+header {
+    position: fixed;
+    width: 100%;
+    padding: 0.5rem 1rem;
+    background-color: #dda15e;
+    box-shadow: 0 3px 5px -1px rgba(0 0 0 / 25%);
+    z-index: 100;
+}
+
+.header-container {
+    width: 90%;
+    max-width: 1080px;
+    margin: 0 auto;
+    display: flex;
+    gap: 1rem;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    width: 20%;
+}
+
+.logo-link {
+    display: inline-block;
+    color: var(--dark);
+    text-decoration: none;
+}
+
+.logo-link h2 {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.logo-link:hover {
+    color: var(--dark);
+}
+
+.navigation {
+    width: 80%;
+    display: flex;
+    gap: 1rem;
+    flex-flow: row nowrap;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.navigation-list {
+    list-style-type: none;
+    display: flex;
+    gap: 1.25rem;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.navigation-item {
+    font-size: 1rem;
+}
+
+.navigation-item a {
+    display: inline-block;
+    text-decoration: none;
+    color: var(--dark);
+}
+
+.menu-elemento {
+    color: var(--dark) !important;
+}
+
+.navigation-item-black {
+    font-weight: bold;
+}
+
+.navigation-action {
+    display: inline-block;
+    padding: 0.25rem 0.3rem;
+    border-radius: 0.25rem;
+    color: var(--white) !important;
+    box-shadow: 2px 2px 3px -1px rgba(0 0 0 / 25%);
+    transition: box-shadow 0.2s ease;
+}
+
+.navigation-action:hover {
+    box-shadow: none;
+}
+
+.login {
+    background-color: var(--success);
+}
+
+.logout {
+    background-color: var(--danger);
+}

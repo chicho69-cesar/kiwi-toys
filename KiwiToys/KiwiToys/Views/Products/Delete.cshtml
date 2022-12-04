@@ -1,5 +1,18 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model Product
+
 @{
+    ViewData["Title"] = "Borrar producto";
 }
+
+<h1>Borrar</h1>
+<h3>¿Estas seguro que deseas borrar este producto?</h3>
+
+<div>
+    <partial name="_ProductDetails" />
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Borrar" class="btn btn-outline-danger col-md-4 offset-2" />
+        <a asp-action="Index" class="btn btn-outline-success col-md-4">Regresar</a>
+    </form>
+</div>

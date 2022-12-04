@@ -6,6 +6,48 @@ html {
     font-size: 14px;
 }
 
+body {
+    background-color: #fcfcfc !important;
+}
+
+body::-webkit-scrollbar { /* Fondo de la barra de scroll */
+    width: 5px;
+    background: transparent;
+}
+
+body::-webkit-scrollbar-thumb { /* Barra de scroll */
+    background: #dda15e;
+    border-radius: 3px;
+}
+
+.container {
+    width: 1200px !important;
+}
+
+:root {
+    --blue: #007bff;
+    --indigo: #6610f2;
+    --purple: #6f42c1;
+    --pink: #e83e8c;
+    --red: #dc3545;
+    --orange: #fd7e14;
+    --yellow: #ffc107;
+    --green: #28a745;
+    --teal: #20c997;
+    --cyan: #17a2b8;
+    --white: #fff;
+    --gray: #6c757d;
+    --gray-dark: #343a40;
+    --primary: #007bff;
+    --secondary: #6c757d;
+    --success: #28a745;
+    --info: #17a2b8;
+    --warning: #ffc107;
+    --danger: #dc3545;
+    --light: #f8f9fa;
+    --dark: #343a40;
+}
+
 @media (min-width: 768px) {
     html {
         font-size: 16px;
@@ -17,17 +59,17 @@ html {
     min-height: 100%;
 }
 
-body {
-    margin-bottom: 60px;
+main {
+    padding-top: 6rem;
 }
 
 .navbar-brand {
     font-size: 1.75rem;
 }
 
-    .navbar-brand:hover {
-        color: #f1f1f1 !important;
-    }
+.navbar-brand:hover {
+    color: #f1f1f1 !important;
+}
 
 .item-hover {
     margin: 0 0.5rem;
@@ -36,15 +78,13 @@ body {
     transition: all 0.2s ease;
 }
 
-    .item-hover:hover {
-        color: #e1e1e1 !important;
-    }
+.item-hover:hover {
+    color: #e1e1e1 !important;
+}
 
 .form-shadow {
     box-shadow: 15px 15px 30px -15px rgba(0 0 0 / 45%)
 }
-
-@charset "utf-8";
 
 /*Zoom images*/
 .zoom {
@@ -56,11 +96,11 @@ body {
     margin: 0 auto;
 }
 
-    .zoom:hover {
-        -ms-transform: scale(2); /* IE 9 */
-        -webkit-transform: scale(2); /* Safari 3-8 */
-        transform: scale(2);
-    }
+.zoom:hover {
+    -ms-transform: scale(1.15); /* IE 9 */
+    -webkit-transform: scale(1.15); /* Safari 3-8 */
+    transform: scale(1.15);
+}
 
 .carousel-inner {
     width: auto;
@@ -89,43 +129,42 @@ body {
     right: 0;
 }
 
+/* Transparent Overlay */
+.loading:before {
+    content: '';
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.3);
+}
 
-    /* Transparent Overlay */
-    .loading:before {
-        content: '';
-        display: block;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0,0,0,0.3);
-    }
+/* :not(:required) hides these rules from IE9 and below */
+.loading:not(:required) {
+    font: 0/0 a;
+    color: transparent;
+    text-shadow: none;
+    background-color: transparent;
+    border: 0;
+}
 
-    /* :not(:required) hides these rules from IE9 and below */
-    .loading:not(:required) {
-        font: 0/0 a;
-        color: transparent;
-        text-shadow: none;
-        background-color: transparent;
-        border: 0;
-    }
-
-        .loading:not(:required):after {
-            content: '';
-            display: block;
-            font-size: 10px;
-            width: 1em;
-            height: 1em;
-            margin-top: -0.5em;
-            -webkit-animation: spinner 1500ms infinite linear;
-            -moz-animation: spinner 1500ms infinite linear;
-            -o-animation: spinner 1500ms infinite linear;
-            animation: spinner 1500ms infinite linear;
-            border-radius: 0.5em;
-            -webkit-box-shadow: rgba(0, 0, 0, 0.75) 1.5em 0 0 0, rgba(0, 0, 0, 0.75) 1.1em 1.1em 0 0, rgba(0, 0, 0, 0.75) 0 1.5em 0 0, rgba(0, 0, 0, 0.75) -1.1em 1.1em 0 0, rgba(0, 0, 0, 0.5) -1.5em 0 0 0, rgba(0, 0, 0, 0.5) -1.1em -1.1em 0 0, rgba(0, 0, 0, 0.75) 0 -1.5em 0 0, rgba(0, 0, 0, 0.75) 1.1em -1.1em 0 0;
-            box-shadow: rgba(0, 0, 0, 0.75) 1.5em 0 0 0, rgba(0, 0, 0, 0.75) 1.1em 1.1em 0 0, rgba(0, 0, 0, 0.75) 0 1.5em 0 0, rgba(0, 0, 0, 0.75) -1.1em 1.1em 0 0, rgba(0, 0, 0, 0.75) -1.5em 0 0 0, rgba(0, 0, 0, 0.75) -1.1em -1.1em 0 0, rgba(0, 0, 0, 0.75) 0 -1.5em 0 0, rgba(0, 0, 0, 0.75) 1.1em -1.1em 0 0;
-        }
+.loading:not(:required):after {
+    content: '';
+    display: block;
+    font-size: 10px;
+    width: 1em;
+    height: 1em;
+    margin-top: -0.5em;
+    -webkit-animation: spinner 1500ms infinite linear;
+    -moz-animation: spinner 1500ms infinite linear;
+    -o-animation: spinner 1500ms infinite linear;
+    animation: spinner 1500ms infinite linear;
+    border-radius: 0.5em;
+    -webkit-box-shadow: rgba(0, 0, 0, 0.75) 1.5em 0 0 0, rgba(0, 0, 0, 0.75) 1.1em 1.1em 0 0, rgba(0, 0, 0, 0.75) 0 1.5em 0 0, rgba(0, 0, 0, 0.75) -1.1em 1.1em 0 0, rgba(0, 0, 0, 0.5) -1.5em 0 0 0, rgba(0, 0, 0, 0.5) -1.1em -1.1em 0 0, rgba(0, 0, 0, 0.75) 0 -1.5em 0 0, rgba(0, 0, 0, 0.75) 1.1em -1.1em 0 0;
+    box-shadow: rgba(0, 0, 0, 0.75) 1.5em 0 0 0, rgba(0, 0, 0, 0.75) 1.1em 1.1em 0 0, rgba(0, 0, 0, 0.75) 0 1.5em 0 0, rgba(0, 0, 0, 0.75) -1.1em 1.1em 0 0, rgba(0, 0, 0, 0.75) -1.5em 0 0 0, rgba(0, 0, 0, 0.75) -1.1em -1.1em 0 0, rgba(0, 0, 0, 0.75) 0 -1.5em 0 0, rgba(0, 0, 0, 0.75) 1.1em -1.1em 0 0;
+}
 
 /* Animation */
 @-webkit-keyframes spinner {
@@ -230,4 +269,38 @@ body {
     height: 20px;
     float: left;
     margin: 0 6px 0 0;
+}
+
+footer {
+    width: 100%;
+    margin-top: 6rem;
+    padding-top: 3rem;
+    color: #fff;
+    background-color: #000;
+}
+
+.footer-information {
+    margin: 3rem 0;
+}
+
+footer ul {
+    list-style: none;
+}
+
+.btn-privacy {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    background-color: #fff;
+    color: #000;
+    font-weight: bold;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    box-shadow: 2px 2px 3px -1px rgba(255, 255, 255, 0.25);
+}
+
+.btn-privacy:hover {
+    color: #000;
+    box-shadow: none;
+    transform: translateY(-1.5px);
 }

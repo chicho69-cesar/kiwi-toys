@@ -1,0 +1,55 @@
+.main-info {
+    width: 100%;
+    padding: 1rem 0;
+}
+
+.slider-container { width: 100%; }
+
+.slider-element {
+    width: 100%;
+    display: flex;
+    gap: 1rem;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.slider-text {
+    width: 30%;
+}
+
+.slider-text .slider-tag span {
+    display: inline-block;
+    padding: 0.25rem 0.5rem;
+    background-color: #000;
+    color: #fff;
+    font-size: 1.25rem;
+}
+
+.slider-text h4 {
+    font-size: 2.75rem;
+    margin-bottom: 1rem;
+}
+
+.slider-text p {
+    font-size: 1.25rem;
+}
+
+.slider-image {
+    width: 50%;
+}
+
+.slider-image img {
+    display: inline-block;
+    height: 500px;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.section-information {
+    width: 100vw;
+    margin: 2rem 0;
+    margin-left: calc(((100vw - 1110px) / 2) * -1);
+    background-color: #dda15e;
+}

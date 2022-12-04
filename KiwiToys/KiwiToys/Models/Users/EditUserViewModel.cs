@@ -36,7 +36,7 @@ namespace KiwiToys.Models {
         [Display(Name = "Foto")]
         public string ImageFullPath => ImageId == Guid.Empty
             ? $"https://localhost:7215/images/noimage.png"
-            : $"https://kiwitoys.blob.core.windows.net/products/{ImageId}";
+            : $"https://kiwitoys.blob.core.windows.net/users/{ImageId}";
 
         [Display(Name = "Image")]
         public IFormFile ImageFile { get; set; }

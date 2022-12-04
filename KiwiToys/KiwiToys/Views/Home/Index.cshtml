@@ -1,8 +1,154 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model HomeViewModel
+
+@{
+    ViewData["Title"] = "Kiwi Toys";
+
+    var prevDisabled = !Model.Products.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.Products.HasNextPage ? "disabled" : "";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<partial name="_Carousel" />
+<partial name="_Information" />
+
+<h1 class="section-title">Lo más reciente en Kiwi Toys</h1>
+
+<p class="section-subtitle">
+    Lo mas nuevo en figuras y las mejores ofertas que puedas encontrar aqui.
+</p>
+
+<div class="mb-3">
+    <a asp-action="Index" asp-route-sortOrder="@ViewData["NameSortParm"]" class="text-primary button-sort">
+        <i class="bi bi-sort-alpha-down"></i> 
+        Ordenar por Nombre
+    </a>&nbsp;&nbsp;
+
+    <a asp-action="Index" asp-route-sortOrder="@ViewData["PriceSortParm"]" class="text-primary button-sort">
+        <i class="bi bi-sort-numeric-down"></i> 
+        Ordenar por Precio
+    </a>
 </div>
+
+<h3 style="margin-top: 3rem;">Categorías</h3>
+
+<div class="mb-3">
+    @foreach (var item in Model.Categories) {
+        <span>
+            <a href="@Url.Action("Index", "Home", new { searchString = item.Name})"
+           class="btn text-black btn-category">
+                @item.Name&nbsp;
+            </a>
+        </span>
+    }
+</div>
+
+<form asp-action="Index" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Buscar por nombre o categoría: <input type="text" name="SearchString" value="@ViewData["CurrentFilter"]" />
+            
+            <button type="submit" class="btn btn-warning">
+                <i class="bi bi-search"></i>
+            </button>
+
+            <a asp-action="Index" class="btn btn-success">Ver Todos los Productos</a>
+        </p>
+    </div>
+</form>
+
+@if (Model.Quantity > 0) {
+    <a asp-action="ShowCart" class="btn btn-outline-primary">
+        Ver Carro de Compras
+        <span class="quantity">(@Model.Quantity)</span>
+    </a>
+}
+
+<div class="section-products">
+    @if (Model.Products.Count() > 0) {
+        @foreach (var item in Model.Products) {
+            <article class="product">
+                <div class="text-center zoom">
+                    <img src="@item.ImageFullPath" class="text-center product-image" alt=@item.Name />
+                </div>
+
+                <div class="product-body">
+                    <h5 class="product-title text-navy">@item.Name</h5>
+                    <p class="product-text">@item.Description</p>
+                    <h5 class="text-muted product-price">@Html.DisplayFor(modelItem => item.Price)</h5>
+                </div>
+
+                <div class="product-footer">
+                    <a asp-action="Details" asp-route-id="@item.Id" class="button button-details">
+                        <i class="bi bi-eye"></i> 
+                        Ver
+                    </a>
+
+                    <a asp-action="Add" asp-route-id="@item.Id" class="button button-add">
+                        <i class="bi bi-cart-plus"></i> 
+                        agregar
+                    </a>
+                </div>
+            </article>
+        }
+    } else {
+        <h3>No hay productos con su criterio de búsqueda</h3>
+    }
+</div>
+
+<div class="mt-5">
+    <a asp-action="Index"
+    asp-route-sortOrder="@ViewData["CurrentSort"]"
+    asp-route-pageNumber="@(Model.Products.PageIndex - 1)"
+    asp-route-currentFilter="@ViewData["CurrentFilter"]"
+    class="btn btn-warning @prevDisabled">
+        <i class="bi bi-chevron-left"></i>
+    </a>
+
+    <span class="text-dark-50 pagination-margin">
+        @(Model.Products.PageIndex) / @(Model.Products.TotalPages)
+    </span>
+
+    <a asp-action="Index"
+    asp-route-sortOrder="@ViewData["CurrentSort"]"
+    asp-route-pageNumber="@(Model.Products.PageIndex + 1)"
+    asp-route-currentFilter="@ViewData["CurrentFilter"]"
+    class="btn btn-warning @nextDisabled">
+        <i class="bi bi-chevron-right"></i>
+    </a>
+</div>
+
+<partial name="_Oferts" />
+<partial name="_Services" />
+
+<style type="text/css">
+    .btn-category:hover {
+        color: #808080 !important;
+    }
+
+    .card {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        border: 1px solid lightgray;
+        box-shadow: 2px 2px 8px 4px #d3d3d3d1;
+        border-radius: 15px;
+        font-family: sans-serif;
+        margin: 5px;
+    }
+
+    .pagination-margin {
+        margin: 0 1rem;
+        font-size: 1.25rem;
+    }
+</style>
+
+<link rel="stylesheet" href="~/css/home.css" asp-append-version="true" />
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <script>
+
+    </script>
+}

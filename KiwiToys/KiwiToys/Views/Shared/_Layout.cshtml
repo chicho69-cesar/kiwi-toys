@@ -1,73 +1,234 @@
 ﻿<!DOCTYPE html>
 <html lang="es">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        
-        <title>@ViewData["Title"]</title>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-        <link rel="icon" type="image/x-icon" href="~/favicon.ico" />
+    <title>@ViewData["Title"]</title>
 
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
-        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-        <link rel="stylesheet" href="~/lib/datatables/css/jquery.dataTables.min.css" />
-        <link rel="stylesheet" href="~/lib/jqueryui/jquery-ui.min.css" />
-        <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-        <link rel="stylesheet" href="~/KiwiToys.styles.css" asp-append-version="true" />
-    </head>
+    <link rel="icon" type="image/x-icon" href="~/favicon.ico" />
 
-    <body>
-        <header>
-            <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-                <div class="container-fluid">
-                    <a class="navbar-brand" asp-controller="Home" asp-action="Index">KiwiToys</a>
-                    
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
-                    data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
+    <link rel="stylesheet" href="~/lib/font-awesome/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/lib/datatables/css/jquery.dataTables.min.css" />
+    <link rel="stylesheet" href="~/lib/jqueryui/jquery-ui.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/flaticon.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/layout.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/KiwiToys.styles.css" asp-append-version="true" />
+</head>
 
-                    <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                        <ul class="navbar-nav flex-grow-1">
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-controller="Home" asp-action="Index">Home</a>
-                            </li>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <a class="logo-link" asp-controller="Home" asp-action="Index">
+                    <h2>
+                        <i class="bi bi-bag-heart"></i>
+                        KIWI TOYS
+                    </h2>
+                </a>
+            </div>
 
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                            </li>
-                        </ul>
+            <nav class="navigation">
+                <ul class="navigation-list">
+                    <li class="navigation-item">
+                        <a class="" asp-action="Index" asp-controller="Home">
+                            Inicio
+                        </a>
+                    </li>
+
+                    <li class="navigation-item">
+                        <a class="" asp-action="About" asp-controller="Home">
+                            Acerca de
+                        </a>
+                    </li>
+
+                    <li class="navigation-item">
+                        <a class="" asp-action="Index" asp-controller="News">
+                            Noticias
+                        </a>
+                    </li>
+
+                    <li class="navigation-item">
+                        <a class="" asp-action="Contact" asp-controller="Home">
+                            Contacto
+                        </a>
+                    </li>
+
+                    @if (User.Identity.IsAuthenticated && User.IsInRole("User")) {
+                        <li class="navigation-item">
+                            <a class="" asp-action="MyOrders" asp-controller="Orders">
+                                Mis pedidos
+                            </a>
+                        </li>
+                    }
+
+                    @if (User.Identity.IsAuthenticated && User.IsInRole("Admin")) {
+                        <li class="nav-item item-hover dropdown">
+                            <a class="nav-link dropdown-toggle menu-elemento" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Administración</a>
+
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li>
+                                    <a class="dropdown-item" asp-controller="Dashboard" asp-action="Index">
+                                        <i class="bi bi-gear"></i>
+                                        Dashboard
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <hr class="dropdown-divider" />
+                                </li>
+
+                                <li>
+                                    <a class="dropdown-item" asp-controller="Categories" asp-action="Index">
+                                        <i class="bi bi-speedometer"></i>
+                                        Categorías
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="dropdown-item" asp-controller="Countries" asp-action="Index">
+                                        <i class="bi bi-globe-americas"></i>
+                                        Países
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="dropdown-item" asp-controller="Orders" asp-action="Index">
+                                        <i class="bi bi-bell"></i>
+                                        Pedidos
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="dropdown-item" asp-controller="Products" asp-action="Index">
+                                        <i class="bi bi-gift"></i>
+                                        Productos
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="dropdown-item" asp-controller="Users" asp-action="Index">
+                                        <i class="bi bi-people"></i>
+                                        Usuarios
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    }
+                </ul>
+
+                <ul class="navigation-list navigation-right">
+                    @if (User.Identity.IsAuthenticated) {
+                        <li class="navigation-item">
+                            <a class="navigation-item-black" asp-controller="Accounts" asp-action="ChangeUser">
+                                @User.Identity.Name
+                            </a>
+                        </li>
+
+                        <li class="navigation-item">
+                            <a class="logout navigation-action" asp-controller="Accounts" asp-action="Logout">
+                                <i class="bi bi-box-arrow-in-left"></i>
+                                Cerrar Sesión
+                            </a>
+                        </li>
+                    } else {
+                        <li class="navigation-item">
+                            <a class="login navigation-action" asp-controller="Accounts" asp-action="Login">
+                                <i class="bi bi-box-arrow-in-right"></i>
+                                Iniciar Sesión
+                            </a>
+                        </li>
+                    }
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <main role="main" class="pb-3">
+            <partial name="_BusyIndicatorPartial" />
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="row footer-information">
+                <div class="col-md">
+                    <div class="ftco-footer-widget mb-4">
+                        <h2 class="ftco-heading-2">KIWI TOYS</h2>
+                        <p>Cualquier cosa que quieras tener la puedes buscar aqui.</p>
+
+                        <a asp-action="Privacy" asp-controller="Home" class="btn-privacy">Ver politicas de privacidad</a>
                     </div>
                 </div>
-            </nav>
-        </header>
 
-        <div class="container">
-            <main role="main" class="pb-3">
-                @RenderBody()
-            </main>
+                <div class="col-md">
+                    <div class="ftco-footer-widget mb-4">
+                        <h2 class="ftco-heading-2">¿Alguna pregunta, estamos ubicados en?</h2>
+                        <div class="block-23 mb-3">
+                            <ul>
+                                <li>
+                                    <span class="icon icon-map-marker"></span><span class="text">
+                                        Hacienda el Saucillo
+                                        150, Haciendas de Aguascalientes Aguascalientes, Aguascalientes, Mexico
+                                    </span>
+                                </li>
+
+                                <li>
+                                    <a href="#">
+                                        <span class="icon icon-phone"></span><span class="text">
+                                            449-192-3465
+                                        </span>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="#">
+                                        <span class="icon icon-envelope"></span><span class="text">cc915609@gmail.com</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <p>
+                        Copyright &copy;
+                        <script>document.write(new Date().getFullYear());</script> All rights reserved | Este trabajo
+                        fue hecho con <i class="bi bi-heart-fill"></i> por <a href="https://aguascalientes.tecnm.mx" target="_blank">Estudiantes del TecNM</a>
+                    </p>
+                </div>
+            </div>
         </div>
+    </footer>
 
-        <script src="~/lib/jquery/dist/jquery.min.js"></script>
-        <script src="~/lib/jasny/jasny-bootstrap.min.js"></script>
-        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="~/lib/datatables/js/jquery.dataTables.min.js"></script>
-        <script src="~/lib/jquery-ui/jquery-ui.min.js"></script>
-        <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/lib/font-awesome/js/all.min.js"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/jasny/jasny-bootstrap.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/lib/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="~/lib/jquery-ui/jquery-ui.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
 
-        <script>
-            function displayBusyIndicator() {
-                $('.loading').show();
-            }
-        </script>
+    <script>
+        function displayBusyIndicator() {
+            $('.loading').show();
+        }
+    </script>
 
-        <script>
-            $(window).on('beforeunload', function () {
-                displayBusyIndicator();
-            });
-        </script>
+    <script>
+        $(window).on('beforeunload', function () {
+            displayBusyIndicator();
+        });
+    </script>
 
-        @await RenderSectionAsync("Scripts", required: false)
-    </body>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
 </html>

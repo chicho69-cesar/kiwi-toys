@@ -79,7 +79,7 @@ namespace KiwiToys.Controllers {
                     .OrderBy(p => p.Name),
             };
 
-            int pageSize = 8;
+            int pageSize = 9;
 
             var model = new HomeViewModel {
                 Products = await PaginatedList<Product>.CreateAsync(query, pageNumber ?? 1, pageSize),
