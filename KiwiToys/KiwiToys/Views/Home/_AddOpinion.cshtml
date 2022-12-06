@@ -1,0 +1,13 @@
+﻿<h2 class="opinion-title">Agrega un comentario a Kiwi Toys</h2>
+
+<form asp-action="AddOpinion" asp-controller="Opinions" method="post" class="opinion-form">
+    <div class="opinion-group">
+        <label for="remark" class="opinion-label">Escribe un comentario: </label>
+        <textarea name="remark" id="remark" placeholder="Comentario ..." required class="opinion-text"></textarea>
+    </div>
+
+    <button type="submit" class="add-opinion-button">
+        <i class="bi bi-journal-plus"></i>
+        Agrega el comentario
+    </button>
+</form>

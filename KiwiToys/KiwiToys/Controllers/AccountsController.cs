@@ -113,7 +113,7 @@ namespace KiwiToys.Controllers {
 
                 string myToken = await _userHelper.GenerateEmailConfirmationTokenAsync(user);
 
-                string tokenLink = Url.Action("ConfirmEmail", "Account", new {
+                string tokenLink = Url.Action("ConfirmEmail", "Accounts", new {
                     userid = user.Id,
                     token = myToken
                 }, protocol: HttpContext.Request.Scheme);
@@ -180,7 +180,7 @@ namespace KiwiToys.Controllers {
                 string myToken = await _userHelper.GeneratePasswordResetTokenAsync(user);
                 string link = Url.Action(
                     "ResetPassword",
-                    "Account",
+                    "Accounts",
                     new { token = myToken },
                     protocol: HttpContext.Request.Scheme
                 );
@@ -329,7 +329,7 @@ namespace KiwiToys.Controllers {
                 User user = await _userHelper.GetUserAsync(model.Username);
 
                 string myToken = await _userHelper.GenerateEmailConfirmationTokenAsync(user);
-                string tokenLink = Url.Action("ConfirmEmail", "Account", new {
+                string tokenLink = Url.Action("ConfirmEmail", "Accounts", new {
                     userid = user.Id,
                     token = myToken
                 }, protocol: HttpContext.Request.Scheme);

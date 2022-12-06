@@ -1,42 +1,43 @@
 ﻿using KiwiToys.Data;
 using KiwiToys.Data.Entities;
 using KiwiToys.Helpers;
-using KiwiToys.Models.Comments;
+using KiwiToys.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace KiwiToys.Controllers {
-    public class OpinionsController : Controller {
+    public class CommentsController : Controller {
         private readonly DataContext _context;
         private readonly IUserHelper _userHelper;
 
-        public OpinionsController(DataContext context, IUserHelper userHelper) {
+        public CommentsController(DataContext context, IUserHelper userHelper) {
             _context = context;
             _userHelper = userHelper;
         }
 
-        [HttpGet]
-        public IActionResult Index() {
-            return View();
-        }
-
         [HttpPost]
-        public async Task<IActionResult> AddOpinion(AddOpinionViewModel model) {
+        public async Task<IActionResult> AddComment(AddCommentViewModel model) {
             User user = await _userHelper.GetUserAsync(User.Identity.Name);
 
             if (user == null) {
                 return NotFound();
             }
 
-            var opinion = new Opinion {
+            Product product = await _context.Products
+                .Where(p => p.Id == model.ProductId)
+                .FirstOrDefaultAsync();
+
+            var comment = new Comment {
                 User = user,
+                Product = product,
                 Date = DateTime.Now,
                 Remark = model.Remark
             };
 
-            _context.Opinions.Add(opinion);
+            _context.Comments.Add(comment);
             await _context.SaveChangesAsync();
 
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Details", "Home", new { id = model.ProductId });
         }
     }
 }

@@ -220,3 +220,117 @@
     box-shadow: none;
     transform: translateY(-1.5px);
 }
+
+.main-opinions {
+    width: 100%;
+}
+
+.section-opinions {
+    width: 100%;
+    column-count: 3;
+    column-gap: 2rem;
+}
+
+.opinion-item {
+    display: inline-block;
+    margin-bottom: 2rem;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    background-color: #fff;
+    box-shadow: 0 0 30px -15px rgba(0 0 0 / 25%);
+}
+
+.opinion-header {
+    width: 100%;
+    margin-bottom: 0.5rem;
+    display: flex;
+    flex-flow: row nowrap;
+    gap: 1rem;
+    justify-content: start;
+    align-items: center;
+}
+
+.opinion-header img {
+    display: inline-block;
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.opinion-header p {
+    padding-left: 0.5rem;
+    border-left: 2px solid #dda15e;
+}
+
+.opinion-header p span {
+    color: #6c757d;
+    font-weight: bold;
+}
+
+.opinion-body p {
+    font-size: 1rem;
+}
+
+.opinion-body p::before, .opinion-body p::after {
+    content: "\"";
+    font-size: 1.5rem;
+    color: #dda15e;
+    font-family: serif;
+    font-weight: bold;
+}
+
+.opinion-form {
+    width: 100%;
+}
+
+.opinion-group {
+    width: 100%;
+    margin-bottom: 1.5rem;
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 0.25rem;
+    justify-content: start;
+    align-items: flex-start;
+}
+
+.opinion-label {
+    width: 100%;
+    margin-top: 1rem;
+    font-size: 1.05rem;
+}
+
+.opinion-text {
+    width: 100%;
+    height: 100px;
+    max-height: 150px;
+    resize: vertical;
+    outline: none;
+    padding: 1rem;
+    border: 1px solid #6c757d;
+    border-radius: 0.5rem;
+    font-size: 1.05rem;
+}
+
+.add-opinion-button {
+    display: inline-block;
+    padding: 0.75rem 2.75rem;
+    border: 2px solid transparent;
+    border-radius: 4rem;
+    background-color: #dda15e;
+    color: #202020;
+    font-size: 1rem;
+    font-weight: bold;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    box-shadow: 2px 2px 3px -1px rgba(0 0 0 / 25%);
+    transition: all 0.2s ease;
+}
+
+.add-opinion-button:hover {
+    background-color: #fff;
+    color: #dda15e;
+    border-color: #dda15e;
+    box-shadow: none;
+    transform: translateY(-1.5px);
+}

@@ -38,17 +38,19 @@ namespace KiwiToys.Data {
 
         private async Task CheckCategoriesAsync() {
             if (!_context.Categories.Any()) {
-                _context.Categories.Add(new Category { Name = "Electronica" });
-                _context.Categories.Add(new Category { Name = "Comida" });
                 _context.Categories.Add(new Category { Name = "Tecnología" });
+                _context.Categories.Add(new Category { Name = "Deportes" });
+                _context.Categories.Add(new Category { Name = "Marvel" });
+                _context.Categories.Add(new Category { Name = "DC" });
+                _context.Categories.Add(new Category { Name = "Hasbro" });
                 _context.Categories.Add(new Category { Name = "Ropa" });
                 _context.Categories.Add(new Category { Name = "Gamer" });
-                _context.Categories.Add(new Category { Name = "Belleza" });
-                _context.Categories.Add(new Category { Name = "Nutrición" });
+                _context.Categories.Add(new Category { Name = "Storm" });
+                _context.Categories.Add(new Category { Name = "BMX" });
                 _context.Categories.Add(new Category { Name = "Calzado" });
-                _context.Categories.Add(new Category { Name = "Deportes" });
-                _context.Categories.Add(new Category { Name = "Mascotas" });
-                _context.Categories.Add(new Category { Name = "Apple" });
+                _context.Categories.Add(new Category { Name = "Coleccionables" });
+                _context.Categories.Add(new Category { Name = "Comics" });
+                _context.Categories.Add(new Category { Name = "Funkos" });
 
                 await _context.SaveChangesAsync();
             }
@@ -179,30 +181,34 @@ namespace KiwiToys.Data {
 
         private async Task CheckProductsAsync() {
             if (!_context.Products.Any()) {
-                await AddProductAsync("Adidas Barracuda", 2700M, 12F, new List<string>() { "Calzado", "Deportes" }, new List<string>() { "adidas_barracuda.png" }, new List<string>() { });
-                await AddProductAsync("Adidas Superstar", 2500M, 12F, new List<string>() { "Calzado", "Deportes" }, new List<string>() { "Adidas_superstar.png" }, new List<string>() {});
-                await AddProductAsync("AirPods", 13000M, 12F, new List<string>() { "Tecnología", "Apple" }, new List<string>() { "airpos.png", "airpos2.png" }, new List<string>() {});
-                await AddProductAsync("Audifonos Bose", 8700M, 12F, new List<string>() { "Tecnología" }, new List<string>() { "audifonos_bose.png" }, new List<string>() { "Estan muy bonitos los audifonos, funcionan de maravilla y no he tenido ningun problema con ellos en general :)" });
-                await AddProductAsync("Bicicleta Ribble", 120000M, 6F, new List<string>() { "Deportes" }, new List<string>() { "bicicleta_ribble.png" }, new List<string>() {});
+                await AddProductAsync("Figura coleccionable de Godzilla", 699M, 10F, new List<string>() { "Hasbro", "Storm" }, new List<string>() { "prod1.png" }, new List<string>() { });
+                await AddProductAsync("Funko Pikachu, Kimetsu No Yaiba", 1229M, 34F, new List<string>() { "Hasbro", "Funkos" }, new List<string>() { "prod2.png" }, new List<string>() { });
+                await AddProductAsync("Figura de Acción Batman", 259M, 12F, new List<string>() { "DC" }, new List<string>() { "prod3.png" }, new List<string>() { });
+                await AddProductAsync("Funko Batman", 499M, 23F, new List<string>() { "DC", "Hasbro", "Comics" }, new List<string>() { "prod4.png" }, new List<string>() { });
+                await AddProductAsync("Funko Pop AMLO", 549M, 35F, new List<string>() { "Hasbro", "Funkos" }, new List<string>() { "prod5.png" }, new List<string>() { "El mejor Funko que existe", "Le compre este Funko a mi sobrinito y le encanto, super, super padre la verdad" });
+                await AddProductAsync("Figura de Acción Iron-Man", 1299M, 7F, new List<string>() { "Marvel", "Comics", "Storm" }, new List<string>() { "prod6.png", "prod7.png" }, new List<string>() { "Esta espectacular esta figura de acción, la acabo de comprar y me encanto, super recomendada" });
+                await AddProductAsync("Figura de Acción Frog-Man", 1119M, 5F, new List<string>() { "DC", "Comics" }, new List<string>() { "prod8.png" }, new List<string>() { });
+                await AddProductAsync("Figura de Acción Baron Zemo", 1359M, 3F, new List<string>() { "Marvel", "Comics", "Storm" }, new List<string>() { "prod9.png" }, new List<string>() { });
+                await AddProductAsync("Figura de Acción Wolverine", 1359M, 6F, new List<string>() { "Marvel", "Coleccionables", "Comics", "Hasbro" }, new List<string>() { "prod10.png" }, new List<string>() { });
+                await AddProductAsync("Figura de Acción Moon Knight", 899M, 12F, new List<string>() { "Marvel" }, new List<string>() { "prod11.png" }, new List<string>() { });
+                await AddProductAsync("Juguete Gran Robot", 799M, 15F, new List<string>() { "Coleccionables", "Hasbro" }, new List<string>() { "prod12.png" }, new List<string>() { });
+                await AddProductAsync("Figura de Acción de Goku", 2759M, 35F, new List<string>() { "Coleccionables", "Storm" }, new List<string>() { "prod13.png" }, new List<string>() { });
+                await AddProductAsync("Adidas Barracuda", 2700M, 12F, new List<string>() { "Calzado" }, new List<string>() { "adidas_barracuda.png" }, new List<string>() { });
+                await AddProductAsync("Adidas Superstar", 2500M, 12F, new List<string>() { "Calzado" }, new List<string>() { "Adidas_superstar.png" }, new List<string>() {});
+                await AddProductAsync("AirPods", 13000M, 12F, new List<string>() { "Tecnología" }, new List<string>() { "airpos.png", "airpos2.png" }, new List<string>() {});
+                await AddProductAsync("Bicicleta Ribble", 120000M, 6F, new List<string>() { "BMX" }, new List<string>() { "bicicleta_ribble.png" }, new List<string>() {});
                 await AddProductAsync("Camisa Cuadros", 560M, 24F, new List<string>() { "Ropa" }, new List<string>() { "camisa_cuadros.png" }, new List<string>() {});
-                await AddProductAsync("Casco Bicicleta", 8200M, 12F, new List<string>() { "Deportes" }, new List<string>() { "casco_bicicleta.png", "casco.png" }, new List<string>() {});
-                await AddProductAsync("iPad", 23000M, 6F, new List<string>() { "Tecnología", "Apple" }, new List<string>() { "ipad.png" }, new List<string>() {});
-                await AddProductAsync("iPhone 13", 52000M, 6F, new List<string>() { "Tecnología", "Apple" }, new List<string>() { "iphone13.png", "iphone13b.png", "iphone13c.png", "iphone13d.png" }, new List<string>() {});
-                await AddProductAsync("Mac Book Pro", 121000M, 6F, new List<string>() { "Tecnología", "Apple" }, new List<string>() { "mac_book_pro.png" }, new List<string>() {});
+                await AddProductAsync("Casco Bicicleta", 8200M, 12F, new List<string>() { "BMX" }, new List<string>() { "casco_bicicleta.png", "casco.png" }, new List<string>() {});
                 await AddProductAsync("Mancuernas", 3700M, 12F, new List<string>() { "Deportes" }, new List<string>() { "mancuernas.png" }, new List<string>() {});
-                await AddProductAsync("Mascarilla Cara", 260M, 100F, new List<string>() { "Belleza" }, new List<string>() { "mascarilla_cara.png" }, new List<string>() {});
                 await AddProductAsync("New Balance 530", 1800M, 12F, new List<string>() { "Calzado", "Deportes" }, new List<string>() { "newbalance530.png" }, new List<string>() {});
                 await AddProductAsync("New Balance 565", 1790M, 12F, new List<string>() { "Calzado", "Deportes" }, new List<string>() { "newbalance565.png" }, new List<string>() {});
                 await AddProductAsync("Nike Air", 2330M, 12F, new List<string>() { "Calzado", "Deportes" }, new List<string>() { "nike_air.png" }, new List<string>() { "Son los mejores tenis que he comprada, estan muy bonitos comodos y me han durado muchisimo, los recomiendo muchisimo la verdad" });
                 await AddProductAsync("Nike Zoom", 2499M, 12F, new List<string>() { "Calzado", "Deportes" }, new List<string>() { "nike_zoom.png" }, new List<string>() {});
                 await AddProductAsync("Buso Adidas Mujer", 1340M, 12F, new List<string>() { "Ropa", "Deportes" }, new List<string>() { "buso_adidas.png" }, new List<string>() {});
-                await AddProductAsync("Suplemento Boots Original", 156M, 12F, new List<string>() { "Nutrición" }, new List<string>() { "Boost_Original.png" }, new List<string>() {});
-                await AddProductAsync("Whey Protein", 2520M, 12F, new List<string>() { "Nutrición" }, new List<string>() { "whey_protein.png" }, new List<string>() {});
-                await AddProductAsync("Arnes Mascota", 250M, 12F, new List<string>() { "Mascotas" }, new List<string>() { "arnes_mascota.png" }, new List<string>() {});
-                await AddProductAsync("Cama Mascota", 990M, 12F, new List<string>() { "Mascotas" }, new List<string>() { "cama_mascota.png" }, new List<string>() {});
                 await AddProductAsync("Teclado Gamer", 670M, 12F, new List<string>() { "Gamer", "Tecnología" }, new List<string>() { "teclado_gamer.png" }, new List<string>() {});
                 await AddProductAsync("Silla Gamer", 9800M, 12F, new List<string>() { "Gamer", "Tecnología" }, new List<string>() { "silla_gamer.png" }, new List<string>() { "Esperaba mas de esta silla, en las fotos que se ve bonita pero no me gusto en general" });
                 await AddProductAsync("Mouse Gamer", 1320M, 12F, new List<string>() { "Gamer", "Tecnología" }, new List<string>() { "mouse_gamer.png" }, new List<string>() {});
+                
                 await _context.SaveChangesAsync();
             }
         }
@@ -247,36 +253,52 @@ namespace KiwiToys.Data {
         }
 
         public async Task CheckNewsAsync() {
-            await AddNewsAsync("El Emisario del Infierno rojo y azul obtiene su propia figura completa con Spider Bracelet y webs gracias a la serie Marvel Legends de Hasbro.\r\nLa versión japonesa de Spider-Man está obteniendo su propia figura como parte de la serie Marvel Legends de Hasbro.\r\n\r\n\r\nAhora disponible para pre-ordenar en el sitio web de Hasbro Pulse, el Spider-Man japonés, a veces denominado \"Supaidaman\", mide seis pulgadas y viene con múltiples accesorios, que incluyen manos intercambiables, telarañas y su marca registrada Spider Bracelet. La figura también cuenta con varios puntos de articulación perfectos para recrear las poses de arácnido salvaje de Spidey, algo común en el programa de televisión, donde el personaje adoptaba con frecuencia una postura dinámica mientras se anunciaba a sí mismo como \"el Emisario del Infierno, Spider-Man\".", "noticia1.jpg");
-            await AddNewsAsync("Tianguis es el mercado tradicional que ha existido desde la época prehispánica y que ha ido evolucionando en forma y contexto social a lo largo de los siglos, el termino Tianguisar o Tianguisando hace referencia al ir a pasear y disfrutar de ver y comprar cosas en el tianguis.", "noticia2.jpg");
+            await AddNewsAsync("Hasbro anuncia la figura de Spider-Man Japones", "El Emisario del Infierno rojo y azul obtiene su propia figura completa con Spider Bracelet y webs gracias a la serie Marvel Legends de Hasbro.\r\nLa versión japonesa de Spider-Man está obteniendo su propia figura como parte de la serie Marvel Legends de Hasbro.\r\n\r\n\r\nAhora disponible para pre-ordenar en el sitio web de Hasbro Pulse, el Spider-Man japonés, a veces denominado \"Supaidaman\", mide seis pulgadas y viene con múltiples accesorios, que incluyen manos intercambiables, telarañas y su marca registrada Spider Bracelet. La figura también cuenta con varios puntos de articulación perfectos para recrear las poses de arácnido salvaje de Spidey, algo común en el programa de televisión, donde el personaje adoptaba con frecuencia una postura dinámica mientras se anunciaba a sí mismo como \"el Emisario del Infierno, Spider-Man\".", "noticia1.jpg");
+            await AddNewsAsync("Tianguisando", "Tianguis es el mercado tradicional que ha existido desde la época prehispánica y que ha ido evolucionando en forma y contexto social a lo largo de los siglos, el termino Tianguisar o Tianguisando hace referencia al ir a pasear y disfrutar de ver y comprar cosas en el tianguis.", "noticia2.jpg");
+
+            await _context.SaveChangesAsync();
         }
 
-        public async Task AddNewsAsync(string description, string image) {
+        public async Task AddNewsAsync(string title, string description, string image) {
+            if (await _context.News.AnyAsync(n => n.Title == title)) {
+                return;
+            }
+
             Guid imageId = await _blobHelper.UploadBlobAsync($"{Environment.CurrentDirectory}\\wwwroot\\images\\news\\{image}", "news");
 
             var news = new News {
                 User = await _context.Users.FirstOrDefaultAsync(),
                 Date = DateTime.Now,
+                Title = title,
                 Description = description,
                 ImageId = imageId
             };
 
-            await _context.News.AddAsync(news);
+            _context.News.Add(news);
         }
 
         public async Task CheckOpinionsAsync() {
             await AddOpinionAsync("Esta increible como les quedo la pagina web, el diseño es bastante atractivo, es facil de usar y la antencion super buena");
             await AddOpinionAsync("Me encanta el diseño que implementaron, es bastante fresco e intuitivo");
+            await AddOpinionAsync("Me gusto mucho porque los envios son eficientes y me llego mi pedido excatamente como lo pedí");
+            await AddOpinionAsync("Le compre unas cosas a mi novia y se las enviaron envueltas en papel de regalo, definitivamente excelente servicio");
+            await AddOpinionAsync("Las figuras que manejan son excelentes, de la mejor calidad y el precio es bastante razonable, definitivamente el mejor lugar para coleccionistas");
+            
+            await _context.SaveChangesAsync();
         }
 
         public async Task AddOpinionAsync(string remark) {
+            if (await _context.Opinions.AnyAsync(o => o.Remark == remark)) {
+                return;
+            }
+
             var opinion = new Opinion {
                 User = await _context.Users.FirstOrDefaultAsync(),
                 Date = DateTime.Now,
                 Remark = remark
             };
 
-            await _context.Opinions.AddAsync(opinion);
+            _context.Opinions.Add(opinion);
         }
 
 

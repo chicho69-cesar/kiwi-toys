@@ -34,7 +34,7 @@
     @foreach (var item in Model.Categories) {
         <span>
             <a href="@Url.Action("Index", "Home", new { searchString = item.Name})"
-           class="btn text-black btn-category">
+            class="btn text-black btn-category">
                 @item.Name&nbsp;
             </a>
         </span>
@@ -119,6 +119,9 @@
 
 <partial name="_Oferts" />
 <partial name="_Services" />
+<partial name="_PopularOpinions" model="@Model.Opinions" />
+
+<partial name="_AddOpinion" />
 
 <style type="text/css">
     .btn-category:hover {

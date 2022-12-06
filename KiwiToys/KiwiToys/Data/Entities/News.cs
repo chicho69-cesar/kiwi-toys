@@ -5,8 +5,10 @@ namespace KiwiToys.Data.Entities {
     public class News {
         public int Id { get; set; }
 
-        [JsonIgnore]
         public User User { get; set; }
+
+        [Display(Name = "Titulo")]
+        public string Title { get; set; }
 
         [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd hh:mm tt}")]
         [Required(ErrorMessage = "La {0} es obligatorio.")]

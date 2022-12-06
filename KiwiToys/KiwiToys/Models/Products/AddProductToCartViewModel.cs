@@ -29,6 +29,8 @@ namespace KiwiToys.Models {
         public string Categories { get; set; }
 
         public ICollection<ProductImage> ProductImages { get; set; }
+        
+        public ICollection<Comment> Comments { get; set; }
 
         [DisplayFormat(DataFormatString = "{0:N2}")]
         [Display(Name = "Cantidad")]

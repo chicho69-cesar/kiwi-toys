@@ -5,7 +5,6 @@ namespace KiwiToys.Data.Entities {
     public class Opinion {
         public int Id { get; set; }
 
-        [JsonIgnore]
         public User User { get; set; }
 
         [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd hh:mm tt}")]

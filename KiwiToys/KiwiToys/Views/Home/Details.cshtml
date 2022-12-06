@@ -102,6 +102,52 @@
     </div>
 </div>
 
+<h1 class="section-title">Lo que la gente opina de este producto</h1>
+
+<p class="section-subtitle">
+    A continuación se muestran los comentarios más destacadas que la gente ha
+    hecho sobre este producto
+</p>
+
+<section class="product-comments">
+    @foreach (var comment in Model.Comments) {
+        <article class="comment-item">
+            <div class="comment-header">
+                <img src="@comment.User.ImageFullPath" alt="@comment.User.UserName" />
+
+                <p>
+                    @comment.User.UserName <br />
+                    <span class="comment-date">@comment.Date</span>
+                </p>
+            </div>
+
+            <div class="comment-body">
+                <p>
+                    @comment.Remark
+                </p>
+            </div>
+        </article>
+    }
+</section>
+
+<h2 class="comment-title">Agrega un comentario a @Model.Name</h2>
+
+<form asp-action="AddComment" asp-controller="Comments" method="post" class="comment-form">
+    <input type="hidden" name="productid" id="productid" value="@Model.Id" />
+    
+    <div class="comment-group">
+        <label for="remark" class="comment-label">Escribe un comentario: </label>
+        <textarea name="remark" id="remark" placeholder="Comentario ..." required class="comment-text"></textarea>
+    </div>
+
+    <button type="submit" class="add-comment-button">
+        <i class="bi bi-journal-plus"></i>
+        Agrega el comentario
+    </button>
+</form>
+
+<link rel="stylesheet" href="~/css/product.css" asp-append-version="true" />
+
 @section Scripts {
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");

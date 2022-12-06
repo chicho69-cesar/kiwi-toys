@@ -1,0 +1,31 @@
+﻿@model ICollection<Opinion>
+
+<h1 class="section-title">Un poco de lo que la gente opina de nosotros</h1>
+
+<p class="section-subtitle">
+    A continuación se muestran los comentarios más destacadas que la gente ha 
+    hecho sobre nosotros
+</p>
+
+<div class="main-opinions">
+    <section class="section-opinions">
+        @foreach (var opinion in Model) {
+            <article class="opinion-item">
+                <div class="opinion-header">
+                    <img src="@opinion.User.ImageFullPath" alt="@opinion.User.UserName" />
+                    
+                    <p>
+                        @opinion.User.UserName <br/>
+                        <span>CLIENTE</span>
+                    </p>
+                </div>
+
+                <div class="opinion-body">
+                    <p>
+                        @opinion.Remark
+                    </p>
+                </div>
+            </article>
+        }
+    </section>
+</div>

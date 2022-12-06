@@ -10,6 +10,7 @@ using System.Diagnostics;
 using Vereyon.Web;
 using Microsoft.EntityFrameworkCore;
 using KiwiToys.Services;
+using System.Xml.Linq;
 
 namespace KiwiToys.Controllers {
     public class HomeController : Controller {
@@ -86,8 +87,15 @@ namespace KiwiToys.Controllers {
             int pageSize = 9;
 
             var model = new HomeViewModel {
-                Products = await PaginatedList<Product>.CreateAsync(query, pageNumber ?? 1, pageSize),
-                Categories = await _context.Categories.ToListAsync(),
+                Products = await PaginatedList<Product>
+                    .CreateAsync(query, pageNumber ?? 1, pageSize),
+                Categories = await _context.Categories
+                    .ToListAsync(),
+                Opinions = await _context.Opinions
+                    .Include(o => o.User)
+                    .OrderByDescending(o => o.Date)
+                    .Take(5)
+                    .ToListAsync()
             };
 
             User user = await _userHelper
@@ -170,6 +178,8 @@ namespace KiwiToys.Controllers {
 
             Product product = await _context.Products
                 .Include(p => p.ProductImages)
+                .Include(p => p.Comments)
+                .ThenInclude(p => p.User)
                 .Include(p => p.ProductCategories)
                 .ThenInclude(pc => pc.Category)
                 .FirstOrDefaultAsync(p => p.Id == id);
@@ -183,6 +193,10 @@ namespace KiwiToys.Controllers {
                 categories += $"{category.Category.Name}, ";
             categories = categories.Substring(0, categories.Length - 2);
 
+            var productComments = await _context.Comments
+                .Where(c => c.Product.Id == id)
+                .ToListAsync();
+
             var model = new AddProductToCartViewModel {
                 Categories = categories,
                 Description = product.Description,
@@ -190,6 +204,7 @@ namespace KiwiToys.Controllers {
                 Name = product.Name,
                 Price = product.Price,
                 ProductImages = product.ProductImages,
+                Comments = productComments,
                 Quantity = 1,
                 Stock = product.Stock
             };

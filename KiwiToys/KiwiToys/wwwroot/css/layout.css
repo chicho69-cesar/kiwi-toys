@@ -93,3 +93,23 @@ header {
 .logout {
     background-color: var(--danger);
 }
+
+.footer-link {
+    text-decoration: none;
+    color: #dda15e;
+}
+
+.footer-link:hover {
+    color: #d8a46a;
+}
+
+footer ul {
+    margin: 0;
+    list-style: none;
+    font-size: 1.125rem;
+}
+
+footer ul li a, footer ul li a:hover {
+    color: #fff;
+    text-decoration: none;
+}

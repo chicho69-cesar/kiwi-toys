@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Data;
 using Vereyon.Web;
+using KiwiToys.Models.Comments;
 
 namespace KiwiToys.Controllers {
     [Authorize(Roles = "Admin")]

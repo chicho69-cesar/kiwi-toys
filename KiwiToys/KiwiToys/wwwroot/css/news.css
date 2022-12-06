@@ -13,3 +13,39 @@
     font-weight: bolder;
     color: #000;
 }
+
+.news-title {
+    text-align: center;
+    margin: 3rem 0 0;
+    font-size: 3rem;
+}
+
+.news-subtitle {
+    margin-bottom: 2rem;
+    text-align: center;
+    font-size: 1.125rem;
+    color: #6c757d;
+}
+
+.news-section {
+    width: 75%;
+    margin: 0 auto;
+}
+
+.news-item {
+    margin-top: 2rem;
+}
+
+.news-date {
+    color: #dda15e;
+}
+
+.news-img {
+    margin-bottom: 1rem;
+}
+
+.news-description {
+    font-size: 1rem;
+    color: #6c757d;
+    line-height: 1.35;
+}

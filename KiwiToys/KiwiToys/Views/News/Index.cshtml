@@ -1,11 +1,50 @@
-﻿@{
+﻿@model NewsViewModel
+
+@{
     ViewData["title"] = "Noticias";
+
+    var prevDisabled = !Model.News.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.News.HasNextPage ? "disabled" : "";
 }
 
 <section class="news-header">
     <h1>Noticias recientes</h1>
 </section>
 
-<h1>Hola Mundo</h1>
+<h1 class="news-title">Las noticias más recientes en Kiwi Toys</h1>
+<p class="news-subtitle">
+    Kiwi Toys te ofrece servicio personalizado y atencion 24/7 de calidad.
+</p>
+
+<section class="news-section">
+    @foreach (var news in Model.News) {
+        <article class="news-item">
+            <h3 class="news-new">@news.Title</h3>
+            <p class="news-date">@news.Date</p>
+            <img src="@news.ImageFullPath" alt="@news.Title" class="news-img"/>
+            <p class="news-description">@news.Description</p>
+        </article>
+    }
+
+    <div class="mt-5">
+        <a asp-action="Index"
+           asp-controller="News"
+           asp-route-page="@(Model.News.PageIndex - 1)"
+           class="btn btn-warning @prevDisabled">
+            <i class="bi bi-chevron-left"></i>
+        </a>
+
+        <span class="text-dark-50 pagination-margin">
+            @(Model.News.PageIndex) / @(Model.News.TotalPages)
+        </span>
+
+        <a asp-action="Index"
+           asp-controller="News"
+           asp-route-page="@(Model.News.PageIndex + 1)"
+           class="btn btn-warning @nextDisabled">
+            <i class="bi bi-chevron-right"></i>
+        </a>
+    </div>
+</section>
 
 <link rel="stylesheet" href="~/css/news.css" asp-append-version="true" />

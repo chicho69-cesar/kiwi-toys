@@ -95,7 +95,7 @@ namespace KiwiToys.Controllers {
 
                 string myToken = await _userHelper.GenerateEmailConfirmationTokenAsync(user);
 
-                string tokenLink = Url.Action("ConfirmEmail", "Account", new {
+                string tokenLink = Url.Action("ConfirmEmail", "Accounts", new {
                     userid = user.Id,
                     token = myToken
                 }, protocol: HttpContext.Request.Scheme);
