@@ -33,6 +33,7 @@ namespace KiwiToys.Models {
         [Display(Name = "Foto")]
         public Guid ImageId { get; set; }
 
+        // TODO: Change the url for the url of production
         [Display(Name = "Foto")]
         public string ImageFullPath => ImageId == Guid.Empty
             ? $"https://localhost:7215/images/noimage.png"

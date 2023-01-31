@@ -39,7 +39,7 @@ namespace KiwiToys.Data.Entities {
         public int ImagesNumber =>
             ProductImages == null ? 0 : ProductImages.Count;
 
-        // TODO: Change the path for local development
+        // TODO: Change the url for the url of production
         [Display(Name = "Foto")]
         public string ImageFullPath => ProductImages == null || ProductImages.Count == 0
             ? $"https://localhost:7215/images/noimage.png"

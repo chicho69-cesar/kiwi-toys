@@ -301,25 +301,6 @@ namespace KiwiToys.Data {
             _context.Opinions.Add(opinion);
         }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         private async Task CheckCountries2Async() {
             if (!_context.Countries.Any()) {
                 _context.Countries.Add(new Country { 

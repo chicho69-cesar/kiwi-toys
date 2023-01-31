@@ -9,7 +9,7 @@ namespace KiwiToys.Data.Entities {
         [Display(Name = "Foto")]
         public Guid ImageId { get; set; }
 
-        // TODO: Change the path for local development
+        // TODO: Change the url for the url of production
         [Display(Name = "Foto")]
         public string ImageFullPath => ImageId == Guid.Empty
             ? $"https://localhost:7215/images/noimage.png"

@@ -29,10 +29,10 @@ namespace KiwiToys {
                 config.Password.RequireDigit = true;
                 config.Password.RequiredUniqueChars = 0;
                 config.Password.RequireLowercase = true;
-                config.Password.RequireNonAlphanumeric = true;
+                config.Password.RequireNonAlphanumeric = false;
                 config.Password.RequireUppercase = false;
                 config.Password.RequiredLength = 8;
-                config.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromSeconds(10); //TimeSpan.FromMinutes(5);
+                config.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(3); //TimeSpan.FromMinutes(5);
                 config.Lockout.MaxFailedAccessAttempts = 5;
                 config.Lockout.AllowedForNewUsers = true;
             })
